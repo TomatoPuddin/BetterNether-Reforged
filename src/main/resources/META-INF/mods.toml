@@ -1,39 +1,36 @@
-modLoader="javafml" #mandatory
-loaderVersion="[35,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
-license="All rights reserved"
-[[mods]] #mandatory
-modId="betternether" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="Better Nether Reforged" #mandatory
-logoFile="examplemod.png" #optional
-credits="Paulevs for the original, Redd90 for the port" #optional
-authors="Paulevs (Fabric Original), SomeoneElse (Forge port)" #optional
+modLoader="javafml"
+loaderVersion="[35,)"
+license="GPLv3"
+
+[[mods]]
+modId="betternether"
+version="${file.jarVersion}"
+displayName="Better Nether Reforged"
+displayURL="https://github.com/TomatoPuddin/BetterNether-Reforged"
+logoFile= "icon.png"
+credits="Paulevs for the original, Redd90 for the port"
+authors="Paulevs (Fabric Original), SomeoneElse (Forge port), TomatoPuddin (Hotfix)"
 description='''
 '''
-[[dependencies.betternether]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[35,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+
+[[dependencies.betternether]]
+    modId="forge"
+    mandatory=true
+    versionRange="[35,)"
     ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-# Here's another dependency
+
 [[dependencies.betternether]]
     modId="minecraft"
     mandatory=true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.16.4,1.16.5)"
     ordering="NONE"
     side="BOTH"
 
-    [[dependencies.betternether]]
-        modId="biomesoplenty"
-        mandatory=false
-        versionRange="[11.0.0.391,)"
-        ordering="AFTER"
-        side="BOTH"
+[[dependencies.betternether]]
+    modId="biomesoplenty"
+    mandatory=false
+    versionRange="[11.0.0.391,)"
+    ordering="AFTER"
+    side="BOTH"
 
