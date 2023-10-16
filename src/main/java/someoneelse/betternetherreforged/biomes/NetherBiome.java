@@ -56,6 +56,9 @@ public class NetherBiome extends ForgeRegistryEntry<NetherBiome> {
 	protected NetherBiome biomeParent;
 	protected NetherBiome edge;
 
+	protected boolean isVanilla = false;
+	protected boolean isOtherMod = false;
+
 	private static final String[] DEF_STRUCTURES = new String[] {
 			structureFormat("altar_01", -2, StructureType.FLOOR, 1),
 			structureFormat("altar_02", -4, StructureType.FLOOR, 1),
@@ -92,7 +95,6 @@ public class NetherBiome extends ForgeRegistryEntry<NetherBiome> {
 	};
 
 	private ArrayList<String> structures;
-	private Biome actualBiome;
 
 
 
@@ -131,6 +133,24 @@ public class NetherBiome extends ForgeRegistryEntry<NetherBiome> {
 			addStructure("netherrack_stalagmite", STALAGMITE_NETHERRACK, StructureType.CEIL, 0.01F, true);
 			addStructure("glowstone_stalagmite", STALAGMITE_GLOWSTONE, StructureType.CEIL, 0.005F, true);
 		}
+	}
+
+	public NetherBiome setVanilla() {
+		isVanilla = true;
+		return this;
+	}
+
+	public NetherBiome setOtherMod() {
+		isOtherMod = true;
+		return this;
+	}
+
+	public boolean isVanilla() {
+		return isVanilla;
+	}
+
+	public boolean isOtherMod() {
+		return isOtherMod;
 	}
 
 	public void setPlantDensity(float density) {
@@ -419,13 +439,5 @@ public class NetherBiome extends ForgeRegistryEntry<NetherBiome> {
 
 	public ResourceLocation getID() {
 		return mcID;
-	}
-
-	public Biome getActualBiome() {
-		return actualBiome;
-	}
-
-	public void setActualBiome(Biome actualBiome) {
-		this.actualBiome = actualBiome;
 	}
 }

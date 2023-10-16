@@ -84,13 +84,11 @@ public class BetterNether
     	
     	modEventBus.addListener(DataGenerators::gatherData);
     	forgeEventBus.addListener(FuelRegistry::onFuelBurnTimeEvent);
-    	modEventBus.addListener(NetherBiomesRegistry::createRegistry);
     	modEventBus.addGenericListener(SoundEvent.class, SoundsRegistry::registerAll);
     	modEventBus.addGenericListener(EntityType.class, EntityRegistry::registerAll);
     	modEventBus.addGenericListener(Block.class, BlocksRegistry::registerAll);
     	modEventBus.addGenericListener(Item.class, ItemsRegistry::registerAll);
     	modEventBus.addGenericListener(TileEntityType.class, TileEntitiesRegistry::registerAll);
-    	modEventBus.addGenericListener(NetherBiome.class, NetherBiomesRegistry::registerNetherBiomes);
     	modEventBus.addGenericListener(Biome.class, NetherBiomesRegistry::registerBiomes);
 
 

@@ -303,7 +303,7 @@ public class BNWorldGenerator {
 				for (int z = 0; z < 8; z++) {
 					popPos.setZ(sz + (z << 1) + 2);
 					Biome b = world.getBiome(popPos);
-					BIOMES[x][y][z] = NetherBiomesRegistry.getFromBiome(b);
+					BIOMES[x][y][z] = ((NetherBiomeProvider)world.getWorld().getChunkProvider().generator.getBiomeProvider()).resolver().getFromBiome(b);;
 					MC_BIOMES.add(b);
 				}
 			}

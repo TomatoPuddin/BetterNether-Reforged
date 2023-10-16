@@ -17,6 +17,10 @@ import net.minecraft.world.gen.feature.structure.StructureStart;
 
 @Mixin(ChunkSerializer.class)
 public class ChunkSerializerMixin {
+	/**
+	 * @author
+	 * @reason
+	 */
 	@Overwrite
 	private static CompoundNBT writeStructures(ChunkPos pos, Map<Structure<?>, StructureStart<?>> structureStarts, Map<Structure<?>, LongSet> structureReferences) {
 		CompoundNBT tagResult = new CompoundNBT();

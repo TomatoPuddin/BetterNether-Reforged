@@ -8,6 +8,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.world.gen.feature.StructureFeature;
+import someoneelse.betternetherreforged.biomes.ActualNetherBiome;
 import someoneelse.betternetherreforged.biomes.NetherBiome;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -35,11 +36,8 @@ public class NetherBiomeProvider extends BiomeProvider {
 	public NetherBiomeProvider(Registry<Biome> biomeRegistry, long seed) {
 		super(getBiomes(biomeRegistry));
 		this.seed = seed;
-		this.map = new BiomeMap(seed, BNWorldGenerator.biomeSizeXZ, BNWorldGenerator.biomeSizeY, BNWorldGenerator.volumetric);
+		this.map = new BiomeMap(seed, BNWorldGenerator.biomeSizeXZ, BNWorldGenerator.biomeSizeY, BNWorldGenerator.volumetric, NetherBiomesRegistry.mapBiomes(biomeRegistry));
 		this.biomeRegistry = biomeRegistry;
-		NetherBiomesRegistry.mapBiomes(biomeRegistry);
-
-
 	}
 
 	private static List<Biome> getBiomes(Registry<Biome> biomeRegistry) {
@@ -54,7 +52,7 @@ public class NetherBiomeProvider extends BiomeProvider {
 
 	@Override
 	public Biome getNoiseBiome(int biomeX, int biomeY, int biomeZ) {
-		NetherBiome netherBiome = map.getBiome(biomeX << 2, biomeY << 2, biomeZ << 2);
+		ActualNetherBiome netherBiome = map.getBiome(biomeX << 2, biomeY << 2, biomeZ << 2);
 		if (biomeX == 0 && biomeZ == 0)
 		{
 			map.clearCache();
@@ -74,5 +72,9 @@ public class NetherBiomeProvider extends BiomeProvider {
 
 	public static void register() {
 		Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(BetterNether.MOD_ID, "nether_biome_source"), CODEC);
+	}
+
+	public BiomeResolver resolver() {
+		return map.getResolver();
 	}
 }
